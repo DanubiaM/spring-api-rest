@@ -1,5 +1,6 @@
 package br.com.alura.forum.controller;
 
+import br.com.alura.forum.controller.dto.TopicoDTO;
 import br.com.alura.forum.modelo.Topico;
 import br.com.alura.forum.modelo.Curso;
 import org.springframework.stereotype.Controller;
@@ -15,10 +16,10 @@ import java.util.List;
 public class TopicosController {
 
     @RequestMapping("/topicos")
-    public List<Object> lista(){
+    public List<TopicoDTO> lista(){
 
         Topico topico = new Topico("Dúvida", "Dúvida com Spring", new Curso("Spring", "Programação"));
 
-        return Arrays.asList(topico, topico, topico);
+        return TopicoDTO.converter(Arrays.asList(topico, topico, topico));
     }
 }
