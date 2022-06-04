@@ -21,12 +21,6 @@ public class Topico {
 	@OneToMany(mappedBy = "topico")
 	private List<Resposta> respostas = new ArrayList<>();
 
-
-
-	public Topico() {
-
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
