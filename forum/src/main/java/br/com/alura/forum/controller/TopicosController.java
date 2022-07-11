@@ -1,14 +1,12 @@
 package br.com.alura.forum.controller;
 import br.com.alura.forum.controller.form.TopicoForm;
-import br.com.alura.forum.controller.repository.CursoRepostiory;
+import br.com.alura.forum.repository.CursoRepostiory;
 import br.com.alura.forum.dto.TopicoDTO;
 import br.com.alura.forum.modelo.Topico;
-import br.com.alura.forum.modelo.Curso;
 import br.com.alura.forum.repository.TopicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
 
 

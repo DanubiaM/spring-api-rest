@@ -1,10 +1,8 @@
 package br.com.alura.forum.controller.form;
 
-import br.com.alura.forum.controller.repository.CursoRepostiory;
+import br.com.alura.forum.repository.CursoRepostiory;
 import br.com.alura.forum.modelo.Curso;
 import br.com.alura.forum.modelo.Topico;
-
-import java.util.Objects;
 
 public class TopicoForm {
     private String titulo;
