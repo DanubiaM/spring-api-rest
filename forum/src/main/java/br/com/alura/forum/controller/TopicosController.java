@@ -5,8 +5,11 @@ import br.com.alura.forum.dto.TopicoDTO;
 import br.com.alura.forum.modelo.Topico;
 import br.com.alura.forum.repository.TopicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 
@@ -32,10 +35,12 @@ public class TopicosController {
     }
 
     @PostMapping
-    public void cadastar(@RequestBody TopicoForm form) {
+    public ResponseEntity<TopicoDTO> cadastar(@RequestBody TopicoForm form, UriComponentsBuilder uriBuilder) {
 
         Topico topico = form.converter(cursoRepostiory);
         topicoRepository.save(topico);
 
+        URI uri = uriBuilder.path("/topicos/{id}").buildAndExpand(topico.getId()).toUri();
+        return ResponseEntity.created(uri).body(new TopicoDTO(topico));
     }
 }
