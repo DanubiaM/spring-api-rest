@@ -48,4 +48,13 @@ public class TopicoForm {
         Curso curso = cursoRepostiory.findAllByNome(nomeCurso);
         return new Topico(titulo, mensagem, curso);
     }
+
+    @Override
+    public String toString() {
+        return "TopicoForm{" +
+                "titulo='" + titulo + '\'' +
+                ", mensagem='" + mensagem + '\'' +
+                ", nomeCurso='" + nomeCurso + '\'' +
+                '}';
+    }
 }
