@@ -1,4 +1,5 @@
 package br.com.alura.forum.controller;
+import br.com.alura.forum.controller.form.AtualizarTopicoForm;
 import br.com.alura.forum.controller.form.TopicoForm;
 import br.com.alura.forum.dto.DetalhesTopicoDTO;
 import br.com.alura.forum.repository.CursoRepostiory;
@@ -11,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
@@ -53,5 +55,18 @@ public class TopicosController {
 
 
         return new DetalhesTopicoDTO(topico);
+    }
+
+    /*
+    * Para atualização existe dois métodos, Put e Path
+    * Put  - é utilizado para sobreescrever toda uma informação
+    * Path - é quando se deseja atualizar apenas um campo da informação/ões
+    * */
+    @PutMapping("/{id}")
+    @Transactional
+    public ResponseEntity<TopicoDTO> atualizar (@PathVariable Long id,@RequestBody @Valid AtualizarTopicoForm form ){
+        Topico topico = form.atualizar(id, topicoRepository);
+
+        return ResponseEntity.ok(new TopicoDTO(topico));
     }
 }
