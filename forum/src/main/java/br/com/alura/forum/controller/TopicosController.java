@@ -69,4 +69,12 @@ public class TopicosController {
 
         return ResponseEntity.ok(new TopicoDTO(topico));
     }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity<?> deletar(@PathVariable Long id){
+        topicoRepository.deleteById(id);
+
+        return ResponseEntity.ok().build();
+    }
 }
