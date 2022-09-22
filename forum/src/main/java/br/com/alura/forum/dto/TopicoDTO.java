@@ -2,6 +2,7 @@ package br.com.alura.forum.dto;
 
 
 import br.com.alura.forum.modelo.Topico;
+import org.springframework.data.domain.Page;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -20,9 +21,9 @@ public class TopicoDTO {
         this.dataCriacao = topico.getDataCriacao();
     }
 
-    public static List<TopicoDTO> converter(List<Topico> topicos) {
+    public static Page<TopicoDTO> converter(Page<Topico> topicos) {
         /*Com stream faz com que não seja necessário percorrer toda a lista*/
-        return topicos.stream().map(TopicoDTO::new).collect(Collectors.toList());
+        return topicos.map(TopicoDTO::new);
     }
 
     public Long getId() {
