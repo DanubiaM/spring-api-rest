@@ -17,7 +17,7 @@ public class Usuario implements UserDetails {
 	private String email;
 	private String senha;
 
-	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "id")
+	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Perfil> perfis = new ArrayList<>();
 
 	public void setPerfis(List<Perfil> perfis) {
