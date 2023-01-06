@@ -17,6 +17,17 @@ public class Usuario implements UserDetails {
 	private String email;
 	private String senha;
 
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "id")
+	private List<Perfil> perfis = new ArrayList<>();
+
+	public void setPerfis(List<Perfil> perfis) {
+		this.perfis = perfis;
+	}
+
+	public List<Perfil> getPerfis() {
+		return perfis;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
