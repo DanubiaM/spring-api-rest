@@ -41,9 +41,11 @@ public class AutenticacaoViaTokenFilter extends OncePerRequestFilter {
     //Function para recuperar e verificar se o token é valido, caso valido é retornado.
     private String recuperarToken(HttpServletRequest request) {
         String token = request.getHeader("Authorization");
-        if (token == null | token.isEmpty() | !token.startsWith("Bearer")){
+
+        if (token == null || token.isEmpty() || !token.startsWith("Bearer ")) {
             return null;
         }
+
         return token.substring(7, token.length());
 
     }
