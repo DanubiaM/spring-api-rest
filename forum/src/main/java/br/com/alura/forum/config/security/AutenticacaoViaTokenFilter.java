@@ -1,5 +1,9 @@
 package br.com.alura.forum.config.security;
 
+import br.com.alura.forum.modelo.Usuario;
+import br.com.alura.forum.repository.UsuarioRepository;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
@@ -14,6 +18,17 @@ import java.io.IOException;
 *
 * */
 public class AutenticacaoViaTokenFilter extends OncePerRequestFilter {
+
+
+    //Não é possível realizar @Autorized nesta classe, portanto devera gerar um construtor
+    private TokenService tokenService;
+    private UsuarioRepository usuarioRepository;
+
+
+    public AutenticacaoViaTokenFilter(TokenService tokenService, UsuarioRepository usuarioRepository) {
+        this.tokenService = tokenService;
+        this.usuarioRepository = usuarioRepository;
+    }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
