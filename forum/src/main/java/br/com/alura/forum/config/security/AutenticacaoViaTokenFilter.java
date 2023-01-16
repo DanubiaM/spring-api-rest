@@ -14,7 +14,7 @@ import java.io.IOException;
 
 
 /*
-* OncePerRequestFilter é como se fosse uma gatway, a requisição  irá passar primeiro nela para ir para o controller.
+* OncePerRequestFilter é como se fosse uma gateway, a requisição  irá passar primeiro nela para ir para o controller.
 *
 * */
 public class AutenticacaoViaTokenFilter extends OncePerRequestFilter {
@@ -40,7 +40,7 @@ public class AutenticacaoViaTokenFilter extends OncePerRequestFilter {
             autenticarCliente(token);
         }
 
-        //Valida token
+        //Filter Chain é o reponsável por chamar o próximo filtro.
         filterChain.doFilter(request, response);
 
 
